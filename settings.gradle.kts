@@ -1,1 +1,1 @@
-rootProject.name = "ceepws"
+rootProject.name = "checkoutProject"
