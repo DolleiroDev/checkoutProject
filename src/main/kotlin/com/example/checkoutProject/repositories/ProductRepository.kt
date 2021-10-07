@@ -2,17 +2,20 @@ package com.example.checkoutProject.repositories
 
 import com.example.checkoutProject.models.Product
 import com.example.checkoutProject.transport.ProductRequest
+import com.fasterxml.jackson.module.kotlin.jacksonObjectMapper
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import org.springframework.stereotype.Repository
+import java.io.File
 import java.time.LocalDate
 import java.time.Month
 
 @Repository
 class ProductRepository {
-
-    private val products: List<Product> = listOf(
-        Product(id = 1, title = "Ergonomic Wooden Pants", value = 15157),
-        Product(id = 2, title = "Ergonomic Cotton Keyboard", value = 93811)
-    )
+    private val jsonString: String = File("C:\\Users\\z003fydd\\Downloads\\ceepws\\checkoutProject\\src\\main\\kotlin\\products.json").readText(Charsets.UTF_8)
+    private val gson = Gson()
+    private val listProductType = object : TypeToken<List<Product>>(){}.type
+    private val products: List<Product> = gson.fromJson(jsonString, listProductType)
 
     fun findById(id: Long): Product? {
         return products.find { it.id == id }

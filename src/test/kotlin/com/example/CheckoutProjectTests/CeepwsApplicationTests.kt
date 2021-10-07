@@ -29,8 +29,8 @@ class CeepwsApplicationTests {
 	@Test
 	fun testFindById() {
 		val products = listOf(
-			Product(id = 1, title = "Ergonomic Wooden Pants", value = 15157),
-			Product(id = 2, title = " Wooden Pants", value = 21212),
+			Product(id = 1, title = "Ergonomic Wooden Pants", amount = 15157),
+			Product(id = 2, title = " Wooden Pants", amount = 21212),
 		)
 		val findById = productRepository.findById(50L)!!
 		Assertions.assertEquals(findById, products[0])

@@ -21,7 +21,7 @@ class ProductController(private val productRepository: ProductRepository){
         checkoutRequest.products.forEach {
             val product = (productRepository.findById(it.id))
             if (product != null) {
-                val newProductRequest = it.copy(unitValue = product.value, totalValue = product.value * it.quantity)
+                val newProductRequest = it.copy(unitValue = product.amount, totalValue = product.amount * it.quantity)
                 products.add(newProductRequest)
             }
         }
